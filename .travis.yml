@@ -6,7 +6,6 @@ node_js:
 cache:
   directories:
     - node_modules
-
 env:
   matrix:
     - REACT=16.7
@@ -17,7 +16,7 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - npm install
+  - rm -f package-lock.json && npm install
   - npm install jest@latest
   - npm run build
   - npm run test -- -u --coverage
@@ -25,7 +24,7 @@ script:
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
-  addons:
+addons:
   code_climate:
     repo_token:
       secure: "d/f4IQxkh155TLzMiPuaSrwDCfVP9tUausTMNnSBBT8MjlgNVu4Jv5hePvkG3/5dRE9D+QV8czslyrr6K02Bsj19/xP5bK2csCB7KfDvFDGGBSbE3AxQjgjn9ujjO/9olq2mdMdrvryIiHkoBnRj3Ykx9ENb+W91iz+COnF3tA2XyoKLWFR9cXOreLNu9hlfxy3ldQc3i4rSXHW4Trluy2TF56M7uas0KuZHvknESfKt8sEMlfaVdP4+W+o0HrIfVYb5+tlTOhz4gewZZm8FT+hpN4Z8Hn4zxkSNOz653dWSHDZ0pAawdkgCOrDC7r/2d4BAYrLRsjKTmUSD9DNLyGsDnwsPL++9ysXQOf/CJdhmlppVUoF/ViDEUwHu0CyH31XNgOkdY+SNFB/9Y+H5MKJCQleTzMAs1/y31Y+XW7tMtXReiu0dxh1uOMHvvB5n+9bfdp7gqvXz3CHX5jXz0pGGoUhcR7OTpjvxzWdIGkCYTYaY5Uwjkoc+N16Y3rOG6SmluLwGWQlLRgg5aoCflvepVaUtR1yEc7DXT9XFi6yRQJAUy2xS7RG2SrIB8JPSYhbN8cf1FKM2KpM1po2vkrhSJt6TqX1DrE4ZZ9xONYYrnT2D0sScbjKX1F/NanO86olA2e0hnqPlv+mJpXhzcYFyYFyVVEedzkffJREZbX4="
