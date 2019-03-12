@@ -9,10 +9,15 @@ const SelectInputGroup = ({
       {option.category_name}
     </option>
   ));
+  selectOptions.push(
+    <option key={0} selected value={0} disabled>
+      Select category
+    </option>,
+  );
   return (
     <div className="form-group">
       <div className="font-weight-bold text-left">{label}</div>
-      <select className="form-control" name={name} value={value} onChange={onChange} id={id}>
+      <select className="form-control" name={name} onChange={onChange} id={id}>
         {selectOptions}
       </select>
     </div>

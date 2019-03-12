@@ -3,6 +3,8 @@ export const ERRORS = "ERRORS";
 export const LOADING = "LOADING";
 export const GET_CATEGORIES = "GET_CATEGORIES";
 export const GET_PRODUCTS = "GET_PRODUCTS";
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const POST_DATA = "POST_DATA";
 
 export const setLoading = () => ({
   type: LOADING,
@@ -26,4 +28,13 @@ export const setCategories = data => ({
 export const setProducts = data => ({
   type: GET_PRODUCTS,
   payload: data,
+});
+
+export const postProduct = data => ({
+  type: ADD_PRODUCT,
+  payload: data,
+});
+
+export const postData = () => ({
+  type: POST_DATA,
 });
