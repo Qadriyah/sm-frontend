@@ -131,6 +131,47 @@ body {
   margin-top: 30px;
 }
 
+.open {
+  display: block;
+}
+
+.close {
+  display: none;
+}
+
+.drawer-open {
+  top: 50px;
+  z-index: 1;
+  height: 100vh;
+  width: 150px;
+  background-color: rgba(199, 197, 201);
+  overflow: hidden;
+  padding-top: 50px;
+  transition: 0.5s;
+  position: fixed;
+}
+
+
+.drawer-open a {
+  text-decoration: none;
+  color: black;
+}
+
+.drawer-open a:hover {
+  color: blue;
+}
+
+.side-menu-item-open {
+  padding: 10px;
+  float: left;
+  width: 100%;
+}
+
+.drawer-close {
+  width: 0;
+  display: none;
+}
+
 .content-one {
   float: left;
   padding: 10px;

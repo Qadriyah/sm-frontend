@@ -2,16 +2,20 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import NewProductForm from "../forms/NewProductForm";
-import { deleteProduct } from "../../actions/productActions";
+import EditProductForm from "../forms/EditProductForm";
+import { deleteProduct, getSingleProduct } from "../../actions/productActions";
 
-class AdminContent extends Component {
+export class AdminContent extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      toggleForm: false,
+    };
   }
 
-  onEdit = (productId) => {
-    console.log(productId);
+  onEditClick = (productId) => {
+    this.setState({ toggleForm: !this.state.toggleForm });
+    this.props.getSingleProduct(productId);
   };
 
   confirmationDialog = (productId) => {
@@ -25,6 +29,7 @@ class AdminContent extends Component {
     let listItems;
     const { products } = this.props;
     const productList = products.products.products;
+    const { toggleForm } = this.state;
     if (productList) {
       listItems = productList.map((product, key) => (
         <tr key={product.id}>
@@ -37,7 +42,7 @@ class AdminContent extends Component {
               className="fas fa-trash-alt trash mr-3"
               onClick={this.confirmationDialog.bind(this, product.id)}
             />
-            <i className="fas fa-edit" onClick={this.onEdit.bind(this, product.id)} />
+            <i className="fas fa-edit" onClick={this.onEditClick.bind(this, product.id)} />
           </td>
         </tr>
       ));
@@ -46,7 +51,7 @@ class AdminContent extends Component {
       <div className="content-one">
         <div className="inner-content">
           <h2>New Product</h2>
-          <NewProductForm />
+          {!toggleForm ? <NewProductForm /> : <EditProductForm />}
         </div>
         <div className="inner-content-one">
           <h2>Product Lists</h2>
@@ -78,6 +83,7 @@ class AdminContent extends Component {
 AdminContent.propTypes = {
   products: PropTypes.instanceOf(Object).isRequired,
   deleteProduct: PropTypes.func.isRequired,
+  getSingleProduct: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -86,5 +92,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { deleteProduct },
+  { deleteProduct, getSingleProduct },
 )(AdminContent);
