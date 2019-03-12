@@ -6,8 +6,9 @@ import AdminMenu from "./AdminMenu";
 import ProfilePicture from "./ProfilePicture";
 import AdminContent from "./AdminContent";
 import { getCategories } from "../../actions/categoryActions";
-import isEmpty from "../../utils/isEmpty";
 import { logout } from "../../actions/loginAction";
+import { getProducts } from "../../actions/productActions";
+import isEmpty from "../../utils/isEmpty";
 
 class AdminDashboard extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class AdminDashboard extends Component {
 
   componentDidMount() {
     this.props.getCategories();
+    this.props.getProducts();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,11 +44,15 @@ class AdminDashboard extends Component {
     this.props.logout();
   };
 
+  onClick = (event) => {
+    console.log("clicked");
+  };
+
   render() {
     const {
       productName, productPrice, categoryId, errors,
     } = this.state;
-    const { categories } = this.props;
+    const { categories, products } = this.props;
     const options = categories.categories.categories;
     return (
       <div className="container-one">
@@ -62,6 +68,8 @@ class AdminDashboard extends Component {
           productPrice={productPrice}
           errors={errors}
           loading={categories.loading}
+          onClick={this.onClick}
+          products={products}
         />
       </div>
     );
@@ -75,15 +83,17 @@ AdminDashboard.propTypes = {
   history: PropTypes.instanceOf(Object).isRequired,
   categories: PropTypes.instanceOf(Object).isRequired,
   logout: PropTypes.func.isRequired,
+  getProducts: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors,
   categories: state.categories,
+  products: state.products,
 });
 
 export default connect(
   mapStateToProps,
-  { getCategories, logout },
+  { getCategories, logout, getProducts },
 )(AdminDashboard);

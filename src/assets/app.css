@@ -163,14 +163,6 @@ body {
 .cart h2 {
   margin-bottom: 10px;
 }
-/* 
-.content-one select {
-  border: solid thin maroon;
-  border-radius: 4px;
-  padding: 5px;
-  margin-bottom: 20px;
-  font-size: 18px;
-} */
 
 .cart input[type='text'] {
   border: solid thin maroon;
@@ -322,11 +314,6 @@ body {
 .inner-content label {
   text-align: left;
 }
-/* 
-.inner-content select {
-  width: 100%;
-  padding: 10px;
-} */
 
 .inner-content-one {
   float: left;
@@ -401,27 +388,6 @@ h2 {
 .login-form p {
   margin-top: 20px;
 }
-/* 
-input[type='text'],
-input[type='password'] {
-  border: solid thin maroon;
-  border-radius: 4px;
-  padding: 10px;
-  width: 100%;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-  font-size: 18px;
-}
-
-input[type='date'] {
-  border: solid thin maroon;
-  border-radius: 4px;
-  padding: 6px;
-  box-sizing: border-box;
-  font-size: 12px;
-  margin-bottom: 3px;
-  width: 120px;
-} */
 
 .wide-btn {
   width: 100%;
@@ -623,6 +589,10 @@ input[type='date'] {
   font-size: 24px;
 }
 
+.loader-one {
+  font-size: 36px;
+}
+
 .error {
   color: red;
   padding: 1px;
@@ -744,13 +714,6 @@ input[type='date'] {
     width: 100%;
     margin-bottom: 10px;
   }
-/* 
-  .content-one .inner-content #aform input[type='text'],
-  input[type='password'],
-  input[type='submit'] {
-    padding: 5px;
-    font-size: 14px;
-  } */
 
   .content-one .inner-content-one #table1 {
     font-size: 8px;
@@ -773,13 +736,6 @@ input[type='date'] {
     width: 100%;
     margin-bottom: 10px;
   }
-/* 
-  .content-one .inner-content #aform input[type='text'],
-  input[type='password'],
-  input[type='submit'] {
-    padding: 5px;
-    font-size: 14px;
-  } */
 
   .content-one .inner-content-one #table1 {
     font-size: 8px;
@@ -803,13 +759,6 @@ input[type='date'] {
     width: 100%;
     margin-bottom: 10px;
   }
-/* 
-  .content-one .inner-content #aform input[type='text'],
-  input[type='password'],
-  input[type='submit'] {
-    padding: 5px;
-    font-size: 14px;
-  } */
 
   .content-one .inner-content-one #table1 {
     font-size: 8px;
@@ -836,13 +785,6 @@ input[type='date'] {
     width: 100%;
     margin-bottom: 10px;
   }
-/* 
-  .content-one .inner-content #aform input[type='text'],
-  input[type='password'],
-  input[type='submit'] {
-    padding: 5px;
-    font-size: 14px;
-  } */
 
   .content-one .inner-content-one #table1 {
     font-size: 8px;
