@@ -1,6 +1,6 @@
 import axios from "axios";
 import {
-  setLoading, setErrors, setProducts, postProduct, postData,
+  setLoading, setErrors, setProducts, postProduct, postData, setProduct,
 } from "./types";
 
 export const getProducts = () => (dispatch) => {
@@ -40,4 +40,26 @@ export const deleteProduct = productId => dispatch => axios
   })
   .catch(() => {
     dispatch(setErrors({ error: "Failed to delete" }));
+  });
+
+export const editProduct = (productId, data) => (dispatch) => {
+  dispatch(postData());
+  return axios
+    .put(`/products/edit/${Number(productId)}`, data)
+    .then((response) => {
+      dispatch(setProduct(response.data));
+      dispatch(getProducts());
+    })
+    .catch((error) => {
+      dispatch(setErrors(error.response.data));
+    });
+};
+
+export const getSingleProduct = productId => dispatch => axios
+  .get(`/products/${Number(productId)}`)
+  .then((response) => {
+    dispatch(setProduct(response.data));
+  })
+  .catch((error) => {
+    dispatch(setErrors(error.response.data));
   });

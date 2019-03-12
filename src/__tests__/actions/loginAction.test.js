@@ -1,10 +1,6 @@
 import moxios from "moxios";
-import configureStore from "redux-mock-store";
-import thunk from "redux-thunk";
-import { loginUser } from "../../actions/loginAction";
-
-const middlewares = [thunk];
-const mockStore = configureStore(middlewares);
+import store from "../../store";
+import { loginUser, logout } from "../../actions/loginAction";
 
 describe("Test the loginAction", () => {
   beforeEach(() => {
@@ -16,7 +12,8 @@ describe("Test the loginAction", () => {
   test("Should login successfully", () => {
     const expectedResponse = {
       success: true,
-      token: "gsghhBKJSJBKJBjjsjs.ksbjxhjNjsbjkbskjbs.mxbxjHXJ",
+      token:
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NDA0NzAyNDIsIm5iZiI6MTU0MDQ3MDI0MiwianRpIjoiZmQyZGRiMjQtNmRhNi00ODM3LThhMjgtOTQ4M2I1ZWJmYjJmIiwiZXhwIjoxNTQxMDc1MDQyLCJpZGVudGl0eSI6ImFkbWluIiwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsiaWQiOiJlOWU4M2M0NCIsIm5hbWUiOiJCYWtlciBTZWtpdG9sZWtvIiwidXNlcm5hbWUiOiJhZG1pbiIsInJvbGVzIjoiYWRtaW4ifX0.Ok2sfPeiQ4K9XW3PVnzI-ju7vSSNd8QCir46MyVPR7w",
     };
     const user = {
       username: "admin",
@@ -29,9 +26,12 @@ describe("Test the loginAction", () => {
         response: expectedResponse,
       });
     });
-    const store = mockStore({});
-    store.dispatch(loginUser(user)).then((response) => {
-      expect(response.data).toEqual(1);
+    return store.dispatch(loginUser(user)).then(() => {
+      expect(store.getState().auth.isAuthenticated).toEqual(true);
     });
+  });
+
+  test("logout action", () => {
+    store.dispatch(logout());
   });
 });
