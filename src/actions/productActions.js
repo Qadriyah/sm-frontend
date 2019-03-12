@@ -19,7 +19,7 @@ export const addProduct = data => (dispatch) => {
   dispatch(postData());
   return axios
     .post("/products", data)
-    .then((response) => {
+    .then(() => {
       dispatch(postProduct("Product added successfully"));
       dispatch(getProducts());
       dispatch(setErrors({}));
@@ -32,3 +32,12 @@ export const addProduct = data => (dispatch) => {
       dispatch(setErrors({ error: message }));
     });
 };
+
+export const deleteProduct = productId => dispatch => axios
+  .delete(`/products/delete/${productId}`, productId)
+  .then(() => {
+    dispatch(getProducts());
+  })
+  .catch(() => {
+    dispatch(setErrors({ error: "Failed to delete" }));
+  });

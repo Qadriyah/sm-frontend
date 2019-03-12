@@ -8,14 +8,11 @@ import AdminContent from "./AdminContent";
 import { getCategories } from "../../actions/categoryActions";
 import { logout } from "../../actions/loginAction";
 import { getProducts } from "../../actions/productActions";
-import isEmpty from "../../utils/isEmpty";
 
 class AdminDashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      errors: {},
-    };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -23,31 +20,23 @@ class AdminDashboard extends Component {
     this.props.getProducts();
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (!isEmpty(nextProps.errors)) {
-      this.setState({ errors: nextProps.errors });
-    }
-  }
-
   onLogout = () => {
     this.props.logout();
   };
 
   render() {
-    const { products } = this.props;
     return (
       <div className="container-one">
         <Header />
         <AdminMenu onClick={this.onLogout} />
         <ProfilePicture />
-        <AdminContent products={products} />
+        <AdminContent />
       </div>
     );
   }
 }
 
 AdminDashboard.propTypes = {
-  errors: PropTypes.instanceOf(Object).isRequired,
   getCategories: PropTypes.func.isRequired,
   auth: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
@@ -59,7 +48,6 @@ const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors,
   categories: state.categories,
-  products: state.products,
 });
 
 export default connect(
