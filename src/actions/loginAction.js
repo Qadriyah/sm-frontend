@@ -29,4 +29,12 @@ export const loginUser = data => (dispatch) => {
     });
 };
 
-export const logout = () => {};
+export const logout = () => (dispatch) => {
+  localStorage.clear();
+  setAuthToken(false);
+  dispatch({
+    type: LOGIN_SUCCESS,
+    payload: {},
+  });
+  window.location.href = "/";
+};
