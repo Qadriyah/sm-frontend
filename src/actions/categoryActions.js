@@ -1,25 +1,15 @@
 import axios from "axios";
-import { LOADING, GET_CATEGORIES, ERRORS } from "./types";
-
-const host = process.env.HOST;
+import { setLoading, setCategories, setErrors } from "./types";
 
 export const getCategories = () => (dispatch) => {
-  dispatch({
-    type: LOADING,
-  });
+  dispatch(setLoading());
   return axios
-    .get(`${host}/products/category`)
+    .get("/products/category")
     .then((response) => {
-      dispatch({
-        type: GET_CATEGORIES,
-        payload: response.data,
-      });
+      dispatch(setCategories(response.data));
     })
     .catch((error) => {
-      dispatch({
-        type: ERRORS,
-        payload: error.response.data,
-      });
+      dispatch(setErrors(error.response.data));
     });
 };
 
