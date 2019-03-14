@@ -2,17 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import NewProductForm from "../forms/NewProductForm";
 
-const AdminContent = ({
-  onSubmit,
-  category,
-  onChange,
-  options,
-  productName,
-  productPrice,
-  errors,
-  loading,
-  products,
-}) => {
+const AdminContent = ({ products }) => {
   let listItems;
   const productList = products.products.products;
   if (productList) {
@@ -33,16 +23,7 @@ const AdminContent = ({
     <div className="content-one">
       <div className="inner-content">
         <h2>New Product</h2>
-        <NewProductForm
-          onSubmit={onSubmit}
-          category={category}
-          onChange={onChange}
-          options={options}
-          productName={productName}
-          productPrice={productPrice}
-          errors={errors}
-          loading={loading}
-        />
+        <NewProductForm />
       </div>
       <div className="inner-content-one">
         <h2>Product Lists</h2>
@@ -71,16 +52,7 @@ const AdminContent = ({
 };
 
 AdminContent.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  category: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  options: PropTypes.instanceOf(Array).isRequired,
-  productName: PropTypes.string.isRequired,
-  productPrice: PropTypes.string.isRequired,
-  errors: PropTypes.instanceOf(Object).isRequired,
-  loading: PropTypes.bool.isRequired,
   products: PropTypes.instanceOf(Object).isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default AdminContent;

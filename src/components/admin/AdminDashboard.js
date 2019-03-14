@@ -14,9 +14,6 @@ class AdminDashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      productName: "",
-      productPrice: "",
-      categoryId: "",
       errors: {},
     };
   }
@@ -32,45 +29,18 @@ class AdminDashboard extends Component {
     }
   }
 
-  onChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  onSubmit = (event) => {
-    event.preventDefault();
-  };
-
   onLogout = () => {
     this.props.logout();
   };
 
-  onClick = (event) => {
-    console.log("clicked");
-  };
-
   render() {
-    const {
-      productName, productPrice, categoryId, errors,
-    } = this.state;
-    const { categories, products } = this.props;
-    const options = categories.categories.categories;
+    const { products } = this.props;
     return (
       <div className="container-one">
         <Header />
         <AdminMenu onClick={this.onLogout} />
         <ProfilePicture />
-        <AdminContent
-          onSubmit={this.onSubmit}
-          category={categoryId}
-          onChange={this.onChange}
-          options={options || []}
-          productName={productName}
-          productPrice={productPrice}
-          errors={errors}
-          loading={categories.loading}
-          onClick={this.onClick}
-          products={products}
-        />
+        <AdminContent products={products} />
       </div>
     );
   }
@@ -81,7 +51,6 @@ AdminDashboard.propTypes = {
   getCategories: PropTypes.func.isRequired,
   auth: PropTypes.instanceOf(Object).isRequired,
   history: PropTypes.instanceOf(Object).isRequired,
-  categories: PropTypes.instanceOf(Object).isRequired,
   logout: PropTypes.func.isRequired,
   getProducts: PropTypes.func.isRequired,
 };
@@ -95,5 +64,9 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getCategories, logout, getProducts },
+  {
+    getCategories,
+    logout,
+    getProducts,
+  },
 )(AdminDashboard);

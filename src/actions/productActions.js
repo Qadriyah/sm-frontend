@@ -1,5 +1,7 @@
 import axios from "axios";
-import { setLoading, setErrors, setProducts } from "./types";
+import {
+  setLoading, setErrors, setProducts, postProduct, postData,
+} from "./types";
 
 export const getProducts = () => (dispatch) => {
   dispatch(setLoading());
@@ -13,4 +15,20 @@ export const getProducts = () => (dispatch) => {
     });
 };
 
-export const addProduct = () => (dispatch) => {};
+export const addProduct = data => (dispatch) => {
+  dispatch(postData());
+  return axios
+    .post("/products", data)
+    .then((response) => {
+      dispatch(postProduct("Product added successfully"));
+      dispatch(getProducts());
+      dispatch(setErrors({}));
+    })
+    .catch((error) => {
+      let message = "Some fields are missing";
+      if (error.response.data.msg === "Product already exists") {
+        message = error.response.data.msg;
+      }
+      dispatch(setErrors({ error: message }));
+    });
+};
