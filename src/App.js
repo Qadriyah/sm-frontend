@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Login from "./components/auth/Login";
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div>
-          <h1>Welcome</h1>
+          <Route exact path="/" component={Login} />
         </div>
       </Router>
     );
