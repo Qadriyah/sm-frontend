@@ -32,7 +32,7 @@ HOST: Server address
 ### Production ready code for the UI
 
 ```
-https://github.com/Qadriyah/sm-frontend/tree/ch-create-reat-router-164495134
+https://github.com/Qadriyah/sm-frontend
 ```
 
 ## Runing the tests
