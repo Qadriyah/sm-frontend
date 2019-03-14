@@ -4,15 +4,17 @@ import { connect } from "react-redux";
 import TextInputGroup from "../common/TextInputGroup";
 import SelectInputGroup from "../common/SelectInputGroup";
 import isEmpty from "../../utils/isEmpty";
-import { addProduct } from "../../actions/productActions";
+import { editProduct } from "../../actions/productActions";
 
-export class NewProductForm extends Component {
+export class EditProductForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       productName: "",
       productPrice: "",
       category: "",
+      categoryName: "",
+      productId: "",
       errors: {},
     };
   }
@@ -20,6 +22,16 @@ export class NewProductForm extends Component {
   componentWillReceiveProps(nextProps) {
     if (!isEmpty(nextProps.errors)) {
       this.setState({ errors: nextProps.errors.errors });
+    }
+    const { products } = nextProps.products.product;
+    if (products) {
+      this.setState({
+        productName: products[0].product_name,
+        productPrice: products[0].product_price,
+        category: products[0].cid,
+        categoryName: products[0].category_name,
+        productId: products[0].id,
+      });
     }
   }
 
@@ -29,20 +41,23 @@ export class NewProductForm extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
-    const { productName, productPrice, category } = this.state;
-    const newProduct = {
+    const {
+      productName, productPrice, category, productId,
+    } = this.state;
+    const produDetails = {
       category_id: Number(category),
       product_name: productName,
       product_price: Number(productPrice),
     };
-    this.props.addProduct(newProduct);
+    this.props.editProduct(productId, produDetails);
   };
 
   render() {
-    const { productName, productPrice, errors } = this.state;
+    const {
+      productName, productPrice, errors, category, categoryName,
+    } = this.state;
     const { categories, loader } = this.props;
     const options = categories.categories.categories;
-
     return (
       <form onSubmit={this.onSubmit} id="bform">
         <SelectInputGroup
@@ -51,8 +66,8 @@ export class NewProductForm extends Component {
           options={options || []}
           id="category"
           label="Category:"
-          value={0}
-          displayText="Select category"
+          value={category}
+          displayText={categoryName}
           data-test="component-select-input"
         />
         <TextInputGroup
@@ -62,6 +77,7 @@ export class NewProductForm extends Component {
           label="Product Name:"
           onChange={this.onChange}
           value={productName}
+          data-test="component-text-input"
         />
         <TextInputGroup
           name="productPrice"
@@ -70,8 +86,9 @@ export class NewProductForm extends Component {
           label="Product Price:"
           onChange={this.onChange}
           value={productPrice}
+          data-test="component-integer-input"
         />
-        <input type="submit" name="submit" value="Submit" className="wide-btn" />
+        <input type="submit" name="submit" value="Update" className="wide-btn" />
         <div className="mt-2 text-left">
           {loader ? (
             <span>
@@ -87,19 +104,21 @@ export class NewProductForm extends Component {
   }
 }
 
-NewProductForm.propTypes = {
+EditProductForm.propTypes = {
   categories: PropTypes.instanceOf(Object).isRequired,
   errors: PropTypes.instanceOf(Object).isRequired,
   loader: PropTypes.bool.isRequired,
+  editProduct: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   categories: state.categories,
   loader: state.products.loader,
   errors: state.errors,
+  products: state.products,
 });
 
 export default connect(
   mapStateToProps,
-  { addProduct },
-)(NewProductForm);
+  { editProduct },
+)(EditProductForm);

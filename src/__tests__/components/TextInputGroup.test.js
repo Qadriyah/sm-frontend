@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import TextInpuGroup from "../../components/common/TextInputGroup";
+import TextInputGroup from "../../components/common/TextInputGroup";
 
 describe("Test TextInputGroup component", () => {
   const props = {
@@ -13,7 +13,7 @@ describe("Test TextInputGroup component", () => {
     value: "Baker",
   };
   test("Should render without errors", () => {
-    const wrapper = shallow(<TextInpuGroup {...props} />);
+    const wrapper = shallow(<TextInputGroup {...props} />);
     const inputField = wrapper.find("[data-test='component-input-field']");
     expect(inputField.length).toBe(1);
   });

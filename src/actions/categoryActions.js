@@ -12,5 +12,3 @@ export const getCategories = () => (dispatch) => {
       dispatch(setErrors(error.response.data));
     });
 };
-
-export const addCategory = () => (dispatch) => {};

@@ -1,5 +1,5 @@
 import {
-  LOADING, GET_PRODUCTS, ADD_PRODUCT, POST_DATA,
+  LOADING, GET_PRODUCTS, ADD_PRODUCT, POST_DATA, GET_PRODUCT,
 } from "../actions/types";
 
 const initialState = {
@@ -7,6 +7,7 @@ const initialState = {
   loader: false,
   message: "",
   products: [],
+  product: {},
 };
 
 const productReducer = (state = initialState, action) => {
@@ -31,6 +32,12 @@ const productReducer = (state = initialState, action) => {
     return {
       ...state,
       message: action.payload,
+      loader: false,
+    };
+  case GET_PRODUCT:
+    return {
+      ...state,
+      product: action.payload,
       loader: false,
     };
   default:

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => (
-  <div className="header">
+  <div className="header" data-test="component-header">
     <Link to="#">
       {" "}
       <img src="../media/logo1.png" alt="" className="logo" />
