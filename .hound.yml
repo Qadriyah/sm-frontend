@@ -1,0 +1,5 @@
+fail_on_violations: false
+
+eslint:
+  enabled: true
+  version: 5.7.0
