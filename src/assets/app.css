@@ -205,7 +205,6 @@ body {
 
 .trash {
   color: red;
-  cursor: pointer;
 }
 
 .trash:hover {
@@ -214,6 +213,7 @@ body {
 
 .fas:hover {
   color: blue;
+  cursor: pointer;
 }
 
 .totals {
