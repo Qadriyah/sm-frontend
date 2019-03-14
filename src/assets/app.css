@@ -32,7 +32,7 @@ body {
   float: left;
 }
 
-.container {
+.container-one {
   position: relative;
   top: 40px;
   left: 0;
@@ -131,7 +131,7 @@ body {
   margin-top: 30px;
 }
 
-.content {
+.content-one {
   float: left;
   padding: 10px;
   width: calc(100% - 150px);
@@ -163,14 +163,14 @@ body {
 .cart h2 {
   margin-bottom: 10px;
 }
-
-.content select {
+/* 
+.content-one select {
   border: solid thin maroon;
   border-radius: 4px;
   padding: 5px;
   margin-bottom: 20px;
   font-size: 18px;
-}
+} */
 
 .cart input[type='text'] {
   border: solid thin maroon;
@@ -301,7 +301,7 @@ body {
 .inner-content {
   float: left;
   width: 40%;
-  height: 100%;
+  height: 83vh;
   padding: 5px;
   border: solid thin grey;
   text-align: center;
@@ -322,16 +322,16 @@ body {
 .inner-content label {
   text-align: left;
 }
-
+/* 
 .inner-content select {
   width: 100%;
   padding: 10px;
-}
+} */
 
 .inner-content-one {
   float: left;
   width: 56%;
-  height: 100%;
+  height: 83vh;
   padding: 5px;
   border: solid thin grey;
   text-align: center;
@@ -401,7 +401,7 @@ h2 {
 .login-form p {
   margin-top: 20px;
 }
-
+/* 
 input[type='text'],
 input[type='password'] {
   border: solid thin maroon;
@@ -421,7 +421,7 @@ input[type='date'] {
   font-size: 12px;
   margin-bottom: 3px;
   width: 120px;
-}
+} */
 
 .wide-btn {
   width: 100%;
@@ -649,9 +649,6 @@ input[type='date'] {
   }
 }
 
-@media screen and (min-width: 918px) and (max-width: 1097px) {
-}
-
 @media screen and (max-width: 917px) {
   .active-user {
     position: absolute;
@@ -681,7 +678,7 @@ input[type='date'] {
     display: block;
   }
 
-  .content {
+  .content-one {
     margin-left: 5px;
     width: 95%;
   }
@@ -704,7 +701,7 @@ input[type='date'] {
     width: 95%;
   }
 
-  .content {
+  .content-one {
     width: 95%;
   }
 
@@ -727,6 +724,7 @@ input[type='date'] {
   .inner-content-one {
     width: 92%;
     margin-bottom: 5px;
+    margin-top: 5px;
   }
 }
 
@@ -740,21 +738,21 @@ input[type='date'] {
     width: 97%;
   }
 
-  .content .cart select,
+  .content-one .cart select,
   input[type='date'],
   input[type='submit'] {
     width: 100%;
     margin-bottom: 10px;
   }
-
-  .content .inner-content #aform input[type='text'],
+/* 
+  .content-one .inner-content #aform input[type='text'],
   input[type='password'],
   input[type='submit'] {
     padding: 5px;
     font-size: 14px;
-  }
+  } */
 
-  .content .inner-content-one #table1 {
+  .content-one .inner-content-one #table1 {
     font-size: 8px;
   }
 }
@@ -769,21 +767,21 @@ input[type='date'] {
     width: 97%;
   }
 
-  .content .cart select,
+  .content-one .cart select,
   input[type='date'],
   input[type='submit'] {
     width: 100%;
     margin-bottom: 10px;
   }
-
-  .content .inner-content #aform input[type='text'],
+/* 
+  .content-one .inner-content #aform input[type='text'],
   input[type='password'],
   input[type='submit'] {
     padding: 5px;
     font-size: 14px;
-  }
+  } */
 
-  .content .inner-content-one #table1 {
+  .content-one .inner-content-one #table1 {
     font-size: 8px;
   }
 }
@@ -798,22 +796,22 @@ input[type='date'] {
     width: 95%;
   }
 
-  .content .cart form select,
+  .content-one .cart form select,
   input[type='date'],
   input[type='submit'],
   input[type='text'] {
     width: 100%;
     margin-bottom: 10px;
   }
-
-  .content .inner-content #aform input[type='text'],
+/* 
+  .content-one .inner-content #aform input[type='text'],
   input[type='password'],
   input[type='submit'] {
     padding: 5px;
     font-size: 14px;
-  }
+  } */
 
-  .content .inner-content-one #table1 {
+  .content-one .inner-content-one #table1 {
     font-size: 8px;
   }
 }
@@ -828,25 +826,25 @@ input[type='date'] {
     width: 320px;
   }
 
-  .content {
+  .content-one {
     width: 95%;
   }
 
-  .content .cart select,
+  .content-one .cart select,
   input[type='date'],
   input[type='submit'] {
     width: 100%;
     margin-bottom: 10px;
   }
-
-  .content .inner-content #aform input[type='text'],
+/* 
+  .content-one .inner-content #aform input[type='text'],
   input[type='password'],
   input[type='submit'] {
     padding: 5px;
     font-size: 14px;
-  }
+  } */
 
-  .content .inner-content-one #table1 {
+  .content-one .inner-content-one #table1 {
     font-size: 8px;
   }
 
